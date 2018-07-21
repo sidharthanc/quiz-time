@@ -73,7 +73,6 @@ GEM
     jwt (0.1.13)
       multi_json (>= 1.5)
     libv8 (3.16.14.19)
-    libv8 (3.16.14.19-x86_64-linux)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
