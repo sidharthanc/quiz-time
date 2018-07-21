@@ -14,41 +14,33 @@
 ActiveRecord::Schema.define(version: 20180719044900) do
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "question_id", limit: 4, null: false
-    t.integer  "option_id",   limit: 4, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "question_id", null: false
+    t.integer  "option_id",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
-
-  add_index "answers", ["option_id"], name: "fk_rails_98d57024fb", using: :btree
-  add_index "answers", ["question_id"], name: "fk_rails_3d5ed4418f", using: :btree
 
   create_table "options", force: :cascade do |t|
-    t.integer  "question_id", limit: 4,   null: false
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "question_id", null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "options", ["question_id"], name: "fk_rails_919a0dabf9", using: :btree
-
   create_table "questions", force: :cascade do |t|
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider",         limit: 255
-    t.string   "uid",              limit: 255
-    t.string   "name",             limit: 255
-    t.string   "oauth_token",      limit: 255
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_foreign_key "answers", "options"
-  add_foreign_key "answers", "questions"
-  add_foreign_key "options", "questions"
 end

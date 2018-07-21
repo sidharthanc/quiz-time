@@ -10,7 +10,7 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
-  adapter: mysql2
+  adapter: sqlite3
   username: root
   password: root
   host: localhost
@@ -26,11 +26,7 @@ test:
   <<: *default
   database: fb_test
 
-production:
-  <<: *default
-  database: ENV['DATABASE_URL']
-  username: root
-  password: root 
+
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
