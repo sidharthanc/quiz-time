@@ -1,16 +1,10 @@
 source 'https://rubygems.org'
-ruby "2.3.0"
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
-
-group :production,:development do
-
-gem 'mysql2', '~> 0.4.10'
-
-end
-
+gem 'sqlite3', :platforms => :ruby
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,9 +26,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
-
-gem 'execjs'
-gem 'therubyracer', :platforms => :ruby
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
