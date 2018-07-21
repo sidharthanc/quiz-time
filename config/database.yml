@@ -26,6 +26,12 @@ test:
   <<: *default
   database: fb_test
 
+production:
+  <<: *default
+  database: ENV['DATABASE_URL']
+  username: ENV['CLEARDB_DATABASE_USERNAME']
+  password: ENV['CLEARDB_DATABASE_PASSWORDs']  
+
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
