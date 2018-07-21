@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+#user-widget{
+  display: none;
+}
+</style>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<form action="/check_answer" method="post">
+  <h2>Online Quiz programmer</h2>
+  <%@questions.each do |questions| %>
+  <%@options=Option.where("question_id=?",questions.id.to_i) %>
+   <div id="#">
+     <label>Q<%=questions.id.to_s %>. <%=questions.description.to_s %></label>
+    </div>
+    <%@options.each do |opt| %>    
+    <label class="radio-inline">
+      <input onclick="return radio_clicked()" value="<%=questions.id.to_s%>#<%=opt.id.to_s%>#" type="radio"  name="optradio<%=questions.id.to_s%>"><%=opt.description.to_s %>
+    </label>
+       <% end %>
+
+  <% end %>
+
+  <input class="form-control " type="hidden" name="tot_array" id="tot_array"  placeholder="id">
+<div class="form-group row"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" onclick="return clicked()" class="btn btn-default">Submit</button>
+    </div>
+</div>
+
+  </form>
+  
+</div>
+
+</body>
+<script type="text/javascript">
+var dict = [];
+var length=0;
+// take an array to store values
+function clicked()
+{
+
+  if (length==0)
+  {
+    alert("please attend atleast one answer");
+    return false;
+  }
+  else
+  {
+ 
+   length=dict.length
+   return true;
+ }
+}
+
+function radio_clicked()
+{
+   $('input:radio:checked').each(function(){
+   dict.push($(this).val());
+   $('#tot_array').val(JSON.stringify(dict));  //push values in array
+});
+  length=dict.length
+  dict=[];
+}
+  
+</script>
+</html>
